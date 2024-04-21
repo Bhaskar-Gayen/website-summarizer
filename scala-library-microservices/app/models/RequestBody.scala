@@ -5,5 +5,5 @@ import play.api.libs.json._
 case class RequestBody(weblink: String)
 
 object RequestBody {
-  implicit val reads: Reads[RequestBody] = Json.reads[RequestBody]
+  implicit val requestBodyFormat: OFormat[RequestBody] = Json.format[RequestBody]
 }

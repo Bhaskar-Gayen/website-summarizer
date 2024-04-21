@@ -1,24 +1,24 @@
-name := """scala-library-microservices"""
-organization := "com.cimbaAI"
+import sbt.Keys.organization
 
-version := "1.0-SNAPSHOT"
+lazy val root = (project in file("."))
+  .enablePlugins(PlayScala)
+  .settings(
+    name := """scala-library-microservices""",
+    organization := "com.cimbaAI",
+    version := "1.0-SNAPSHOT",
+    scalaVersion := "2.13.13",
+    libraryDependencies ++= Seq(
+      guice,
+      "org.playframework" %% "play-slick" % "6.1.0",
+      "org.playframework" %% "play-slick-evolutions" % "6.1.0",
+      "com.h2database" % "h2" % "1.4.192",
+      "org.postgresql" % "postgresql" % "42.2.24",
+      specs2 % Test,
+    ),
+    scalacOptions ++= Seq(
+      "-feature",
+      "-deprecation",
+      "-Xfatal-warnings"
+    )
+  )
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala)
-
-scalaVersion := "2.13.13"
-
-libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.0" % Test
-
-// Slick dependencies for database access
-libraryDependencies += "com.typesafe.slick" %% "slick" % "3.3.3"
-libraryDependencies += "org.postgresql" % "postgresql" % "42.2.24"
-
-// For using HikariCP as the connection pool
-libraryDependencies += "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3"
-
-// Adds additional packages into Twirl
-//TwirlKeys.templateImports += "com.cimbaAI.controllers._"
-
-// Adds additional packages into conf/routes
-// play.sbt.routes.RoutesKeys.routesImport += "com.cimbaAI.binders._"

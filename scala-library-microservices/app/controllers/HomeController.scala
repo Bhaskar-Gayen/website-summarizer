@@ -1,26 +1,26 @@
 package controllers
 
-import SummarizeLogRepoImp._
+
 
 import javax.inject._
 import play.api.mvc._
 import play.api.libs.json._
 import models._
-import scala.concurrent.ExecutionContext.Implicits.global
+
 import java.time.LocalDateTime
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class HomeController @Inject()(val controllerComponents: ControllerComponents, val summaryLogRepo: SummarizeLogRepoImpl) extends BaseController {
+class HomeController @Inject()(repo: LogRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
 
-  def index() = Action { implicit request: Request[AnyContent] =>
+  def index = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }
 
-  def addLog() = Action.async(parse.json) { request =>
+  def addLog = Action.async(parse.json) { implicit request =>
     val requestBodyResult = request.body.validate[RequestBody]
-    println("Incoming request" + request)
+    println("Incoming request body: " + request.body)
     requestBodyResult.fold(
       errors => {
         Future.successful(BadRequest(Json.obj("message" -> JsError.toJson(errors))))
@@ -29,7 +29,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
         // Process the request body
         val website = requestBody.weblink
         // Insert data to database
-        summaryLogRepo.addLog(WebsiteSummarizeLog(LocalDateTime.now(), website))
+        repo.addLog(WebsiteSummarizeLog(LocalDateTime.now(), website))
         println(s"Website link: $website")
         Future.successful(Ok(Json.obj("message" -> "Request processed successfully")))
       }
@@ -37,8 +37,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, v
   }
 
 
-  def getHistory(): Action[AnyContent] = Action.async {implicit request=>
-    summaryLogRepo.getAllLogs.map { logs =>
+  def getLogs: Action[AnyContent] = Action.async { implicit request=>
+    repo.getAllLogs.map { logs =>
       // Convert the logs to JSON
       Ok(Json.toJson(logs))
     }
