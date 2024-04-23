@@ -10,9 +10,12 @@ web_link="https://www.cimba.ai/"
 async def summarize(payload: Request):
     #  Call the summarization service and return the result
     data =await payload.json()
+    print(data)
     return services.summarize_function(data['weblink'])
     
-    
+@app.get("/")
+async def index():
+    return {"res":"python microservice is up"} 
  
 if __name__ == "__main__":
     import uvicorn
