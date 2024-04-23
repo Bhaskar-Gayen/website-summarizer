@@ -12,8 +12,8 @@ function App() {
   return (
     <div className="App">
       <div className="flex justify-center items-center h-screen">
-        <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-          <h2 className="text-xl font-medium text-gray-900 dark:text-white">
+        <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6">
+          <h2 className="text-xl font-medium text-gray-900">
             Summarize a Website
           </h2>
           <SummarizeForm />

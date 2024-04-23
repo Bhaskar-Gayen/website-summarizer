@@ -13,6 +13,8 @@ lazy val root = (project in file("."))
       "org.playframework" %% "play-slick-evolutions" % "6.1.0",
       "com.h2database" % "h2" % "1.4.192",
       "org.postgresql" % "postgresql" % "42.2.24",
+      ws,
+      ehcache,
       specs2 % Test,
     ),
     scalacOptions ++= Seq(

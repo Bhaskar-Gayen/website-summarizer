@@ -1,17 +1,17 @@
 package controllers
 
-
-
 import javax.inject._
 import play.api.mvc._
 import play.api.libs.json._
 import models._
+import play.api.libs.ws.{WSClient, WSResponse}
 
 import java.time.LocalDateTime
 import scala.concurrent.{ExecutionContext, Future}
 
+
 @Singleton
-class HomeController @Inject()(repo: LogRepository, cc: MessagesControllerComponents)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
+class HomeController @Inject()(repo: LogRepository, cc: MessagesControllerComponents, ws: WSClient)(implicit ec: ExecutionContext) extends MessagesAbstractController(cc) {
 
 
   def index = Action { implicit request: Request[AnyContent] =>
@@ -31,7 +31,17 @@ class HomeController @Inject()(repo: LogRepository, cc: MessagesControllerCompon
         // Insert data to database
         repo.addLog(WebsiteSummarizeLog(LocalDateTime.now(), website))
         println(s"Website link: $website")
-        Future.successful(Ok(Json.obj("message" -> "Request processed successfully")))
+        //python microservice api call
+        ws.url("http://localhost:8000/summarize").post(request.body)
+          .map{ response=>
+            println(response.body)
+            Ok(response.body)
+          }
+          .recover{
+            case ex: Exception =>{
+              InternalServerError("An error occurred")
+            }
+          }
       }
     )
   }

@@ -10,11 +10,6 @@ const SummaryHistory = () => {
     setHistory([]);
   };
 
-  const renderHistory = () => {
-    console.log(history);
-    return history;
-  };
-
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/history")
@@ -33,7 +28,15 @@ const SummaryHistory = () => {
       {error && <p className="text-red-500">{error}</p>}
       {history.length > 0 ? (
         <div className="mt-4">
-          {renderHistory()}
+          <div className="border-b border-gray-200 py-2">
+            {history.map((log, index) => (
+              <div key={index} className="border-b border-gray-200 py-2">
+                <p>{log.timestamp}</p>
+                <p>{log.website}</p>
+              </div>
+            ))}
+          </div>
+
           <button
             onClick={clearHistory}
             className="mt-4 px-3 py-1 text-sm font-medium text-white bg-red-600 rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
