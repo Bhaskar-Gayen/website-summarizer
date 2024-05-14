@@ -20,7 +20,8 @@ This project is a collection of microservices designed to provide AI-powered ser
 
 The project follows a microservices architecture with each service responsible for a specific functionality. The services communicate over HTTP and are deployed on Kubernetes for scalability and reliability.
 
-![Architecture Diagram](architecture.png)
+![Architecture Diagram](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/ea36e5e6-5941-49b1-8f9b-e4a15d1f85cd)
+
 
 ## APIs
 
@@ -36,13 +37,16 @@ The Python service exposes the following REST API:
 ## Screenshots
 
 ### Homepage
-![Homepage](homepage.png)
+![Homepage](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/e82f30a0-78f6-46a4-86a1-593e06b1c775)
+
 
 ### Summarize Form
-![Summarize Form](summarize-form.png)
+![Summarize Form](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/9c060657-39e4-4e91-8299-b04d06718ca0)
 
-### History Page
-![History Page](history-page.png)
+
+### History Logs
+![History Page](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/1a2544a9-ba49-48b9-ba98-d17e365e5757)
+
 
 ## Usage
 
