@@ -1,0 +1,12 @@
+2024.05.10 17:53:30 INFO  Started: Metals version 1.3.0 in folders 'C:\Users\gayen\OneDrive\Desktop\CimbaAI-project\scala-library-microservices' for client Visual Studio Code 1.88.1.
+2024.05.10 17:53:31 INFO  time: initialize in 1.17s
+SLF4J: Class path contains multiple SLF4J providers.
+SLF4J: Found provider [scribe.slf4j.ScribeServiceProvider@4859723f]
+SLF4J: Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@1435ecc9]
+SLF4J: See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual provider is of type [scribe.slf4j.ScribeServiceProvider@4859723f]
+2024.05.10 17:53:41 WARN  Flyway upgrade recommended: H2 2.2.224 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.220.
+2024.05.10 17:53:52 WARN  Build server is not auto-connectable.
+2024.05.10 18:55:59 INFO  Shutting down server
+2024.05.10 18:55:59 INFO  shutting down Metals
+2024.05.10 18:55:59 INFO  Exiting server
