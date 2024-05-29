@@ -15,6 +15,13 @@ public class UserAPIController {
 
     @Autowired
     private APIServices apiServices;
+
+    @GetMapping("/")
+    public String welcomeGreet(){
+        return " Backend Java SpringBoot Microservice Up";
+    }
+
+    
     @PostMapping("/summarize")
     public ResponseEntity<String> summarizeUrl(@RequestBody WebsiteRequest request) {
 
