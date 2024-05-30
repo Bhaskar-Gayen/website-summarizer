@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: scala-service
+spec:
+  type: { { .Values.scalaService.service.type } }
+  ports:
+    - port: 9000
+  selector:
+    app: scala-service

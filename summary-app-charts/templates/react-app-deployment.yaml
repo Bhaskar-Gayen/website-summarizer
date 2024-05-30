@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app
+spec:
+  replicas: { { .Values.reactApp.replicaCount } }
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+        - name: react-app
+          image: "{{ .Values.reactApp.image.repository }}:{{ .Values.reactApp.image.tag }}"
+          ports:
+            - containerPort: 3000

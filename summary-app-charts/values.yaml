@@ -1,0 +1,66 @@
+global:
+  scalaServiceUrl: http://scala-service:9000
+
+reactApp:
+  replicaCount: 1
+  image:
+    repository: vaskar007/react-ui-app
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 3000
+
+backendService:
+  replicaCount: 1
+  image:
+    repository: vaskar007/backend-java-springboot-service
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 8080
+
+scalaService:
+  replicaCount: 1
+  image:
+    repository: vaskar007/scala-library-service
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 9000
+
+pythonService:
+  replicaCount: 1
+  image:
+    repository: vaskar007/python-fast-api-service
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 8000
+
+ingress:
+  enabled: true
+  annotations: {}
+  hosts:
+    - host: websitesummarize.local
+      paths:
+        - path: /backend
+          service:
+            name: backend-service
+            port: 8080
+        - path: /python
+          service:
+            name: python-service
+            port: 8000
+        - path: /
+          service:
+            name: react-app
+            port: 3000
+        - path: /scala
+          service:
+            name: scala-service
+            port: 9000
+  tls: []

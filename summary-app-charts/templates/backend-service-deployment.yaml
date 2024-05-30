@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-service
+spec:
+  replicas: { { .Values.backendService.replicaCount } }
+  selector:
+    matchLabels:
+      app: backend-service
+  template:
+    metadata:
+      labels:
+        app: backend-service
+    spec:
+      containers:
+        - name: backend-service
+          image: "{{ .Values.backendService.image.repository }}:{{ .Values.backendService.image.tag }}"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: HISTORY_SERVICE_URL
+              value: "{{ .Values.global.historyServiceUrl }}"

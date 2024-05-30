@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scala-service
+spec:
+  replicas: { { .Values.scalaService.replicaCount } }
+  selector:
+    matchLabels:
+      app: scala-service
+  template:
+    metadata:
+      labels:
+        app: scala-service
+    spec:
+      containers:
+        - name: scala-service
+          image: "{{ .Values.scalaService.image.repository }}:{{ .Values.scalaService.image.tag }}"
+          ports:
+            - containerPort: 9000
