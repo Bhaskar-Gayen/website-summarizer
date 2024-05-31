@@ -45,7 +45,7 @@ ingress:
   enabled: true
   annotations: {}
   hosts:
-    - host: websitesummarize.local
+    - host: website-summarizer.local
       paths:
         - path: /backend
           service:

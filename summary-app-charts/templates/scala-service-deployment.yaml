@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: scala-service
 spec:
-  replicas: { { .Values.scalaService.replicaCount } }
+  replicas: {{ .Values.scalaService.replicaCount }}
   selector:
     matchLabels:
       app: scala-service

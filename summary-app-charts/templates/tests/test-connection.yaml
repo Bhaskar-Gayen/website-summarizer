@@ -8,8 +8,20 @@ metadata:
     "helm.sh/hook": test
 spec:
   containers:
-    - name: wget
+    - name: wget-backend
       image: busybox
       command: ['wget']
-      args: ['{{ include "summary-app-charts.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "summary-app-charts.fullname" . }}-backend:{{ .Values.backendService.service.port }}']
+    - name: wget-scala
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "summary-app-charts.fullname" . }}-scala:{{ .Values.scalaService.service.port }}']
+    - name: wget-python
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "summary-app-charts.fullname" . }}-python:{{ .Values.pythonService.service.port }}']
+    - name: wget-react
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "summary-app-charts.fullname" . }}-react:{{ .Values.reactApp.service.port }}']
   restartPolicy: Never

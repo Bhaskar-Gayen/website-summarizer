@@ -3,8 +3,9 @@ kind: Service
 metadata:
   name: python-service
 spec:
-  type: { { .Values.pythonService.service.type } }
+  type: {{ .Values.pythonService.service.type }}
   ports:
     - port: 8000
+      targetPort: 8000
   selector:
     app: python-service

@@ -3,8 +3,9 @@ kind: Service
 metadata:
   name: scala-service
 spec:
-  type: { { .Values.scalaService.service.type } }
+  type: {{ .Values.scalaService.service.type }}
   ports:
     - port: 9000
+      targetPort: 9000
   selector:
     app: scala-service

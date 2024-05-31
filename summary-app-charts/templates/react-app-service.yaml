@@ -3,8 +3,9 @@ kind: Service
 metadata:
   name: react-app
 spec:
-  type: { { .Values.reactApp.service.type } }
+  type: {{ .Values.reactApp.service.type }}
   ports:
     - port: 3000
+      targetPort: 3000
   selector:
     app: react-app
