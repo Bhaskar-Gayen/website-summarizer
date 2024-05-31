@@ -1,4 +1,4 @@
-# website-Summarizer
+# Website-Summarizer
 
 ## Overview
 
@@ -22,7 +22,6 @@ The project follows a microservices architecture with each service responsible f
 
 ![Architecture Diagram](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/ea36e5e6-5941-49b1-8f9b-e4a15d1f85cd)
 
-
 ## APIs
 
 The Spring Boot API service exposes the following REST APIs:
@@ -39,14 +38,11 @@ The Python service exposes the following REST API:
 ### Homepage
 ![Homepage](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/e82f30a0-78f6-46a4-86a1-593e06b1c775)
 
-
 ### Summarize Form
 ![Summarize Form](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/9c060657-39e4-4e91-8299-b04d06718ca0)
 
-
 ### History Logs
 ![History Page](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/1a2544a9-ba49-48b9-ba98-d17e365e5757)
-
 
 ## Usage
 
@@ -56,8 +52,21 @@ To run the project locally, follow these steps:
 2. Install the necessary dependencies for each microservice.
 3. Run each microservice using the appropriate command (`./gradlew bootRun` for Spring Boot, `sbt run` for Scala, `uvicorn main:app --reload` for Python).
 
-## Contributors
+## Deployment
 
-- Bhaskar Gayen
+To deploy the project on a Kubernetes cluster using Helm, follow these steps:
 
+### Prerequisites
 
+Ensure you have the following installed:
+
+- Docker
+- Minikube
+- Helm
+
+### Steps
+
+ **Start Minikube**:
+   ```sh
+   minikube start
+### Demo Video
