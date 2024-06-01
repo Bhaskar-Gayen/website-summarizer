@@ -67,6 +67,9 @@ Ensure you have the following installed:
 
  **Start Minikube**:
    ```sh
-   minikube start
+minikube start
+```  
+ 
+https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/2e6fe9bf-b470-4b45-a345-fa33a64fb75c
 
-“Demo Video ---------- [](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/demo-video.mp4)”
+ 
