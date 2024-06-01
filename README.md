@@ -64,9 +64,9 @@ Ensure you have the following installed:
 - Minikube
 - Helm
 
-### Steps
 
  **Start Minikube**:
    ```sh
    minikube start
-### Demo Video
+
+“Demo Video ---------- [](https://github.com/Bhaskar-Gayen/website-summarizer/assets/84518595/demo-video.mp4)”
